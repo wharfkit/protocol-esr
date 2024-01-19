@@ -16,7 +16,7 @@ import {
     UInt64,
 } from '@wharfkit/session'
 
-import {uuid} from './utils'
+import {generateReturnUrl, uuid} from './utils'
 
 import {BuoySession} from './buoy-types'
 
@@ -31,7 +31,8 @@ export interface WalletPluginOptions {
 
 export interface IdentityRequestResponse {
     callback
-    request: SigningRequest
+    request: SigningRequest // Request for multi-device login
+    sameDeviceRequest: SigningRequest // Request for same-device login
     requestKey: PublicKey
     privateKey: PrivateKey
 }
@@ -78,10 +79,16 @@ export async function createIdentityRequest(
         context.esrOptions
     )
 
+    const sameDeviceRequest = request.clone()
+    const returnUrl = generateReturnUrl()
+    sameDeviceRequest.setInfoKey('same_device', true)
+    sameDeviceRequest.setInfoKey('return_path', returnUrl)
+
     // Return the request and the callback data
     return {
         callback: callbackChannel,
         request,
+        sameDeviceRequest,
         requestKey,
         privateKey,
     }
