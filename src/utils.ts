@@ -109,7 +109,7 @@ export function generateReturnUrl() {
     return window.location.href
 }
 
-function isAppleHandheld() {
+export function isAppleHandheld() {
     return /iP(ad|od|hone)/i.test(navigator.userAgent)
 }
 
