@@ -17,7 +17,13 @@ suite('anchor', () => {
         test('returns an object with request, callback, requestKey and privateKey properties', async () => {
             const result = await createIdentityRequest(mockLoginContext, mockBuoyUrl)
 
-            expect(result).to.have.all.keys('request', 'callback', 'requestKey', 'privateKey')
+            expect(result).to.have.all.keys(
+                'request',
+                'callback',
+                'requestKey',
+                'privateKey',
+                'sameDeviceRequest'
+            )
         })
 
         test('returns a SigningRequest instance with the correct values', async () => {

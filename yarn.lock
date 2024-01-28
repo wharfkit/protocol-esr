@@ -583,17 +583,7 @@
     "@typescript-eslint/types" "5.50.0"
     eslint-visitor-keys "^3.3.0"
 
-"@wharfkit/abicache@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/abicache/-/abicache-1.2.0.tgz#f67f7bbd854adc443c3e363d5fbe3d27ac4f8383"
-  integrity sha512-1+564ODM1KhUs7chE8KpYhnxShuPLC1MvqYcXVuLosxXXwcYC4IiJ1V3VuikLG+xfBDp1GZivGjHQwv1awE2Zw==
-  dependencies:
-    "@wharfkit/antelope" "^1.0.0"
-    "@wharfkit/signing-request" "^3.1.0"
-    pako "^2.0.4"
-    tslib "^2.1.0"
-
-"@wharfkit/abicache@^1.2.1":
+"@wharfkit/abicache@^1.2.0", "@wharfkit/abicache@^1.2.1":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@wharfkit/abicache/-/abicache-1.2.2.tgz#c3d83485e3e3782ac94ced460915bad1ceee0be9"
   integrity sha512-yOsYz2qQpQy7Nb8XZj62pZqp8YnmWDqFlrenYksBb9jl+1aWIpFhWd+14VEez4tUAezRH4UWW+w1SX5vhmUY9A==
@@ -603,22 +593,22 @@
     pako "^2.0.4"
     tslib "^2.1.0"
 
-"@wharfkit/antelope@^1.0.0":
+"@wharfkit/account@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.0.tgz#c3057b70575991be5de3aea19e0c474614783c80"
-  integrity sha512-gwc6L3AzceN/menx9HCV22Ekd3it1wRruY6dIkyfCaV2UBGmfvIVJ3wPaDi4Ppj2k50b86ShSSHdd52jOFd+dg==
+  resolved "https://registry.yarnpkg.com/@wharfkit/account/-/account-1.0.0.tgz#961af9a6b36208894b01c644031c7db873139451"
+  integrity sha512-I+5iT0DnE0oYQm9v/E+VIgyN+zd1jy8bbaJGxV2rAmHBPn48NKO9PV0EGWgZ8pfNvx/Tf5fG1kZpIbmTQ8Q+8A==
   dependencies:
-    bn.js "^4.11.9"
-    brorand "^1.1.0"
-    elliptic "^6.5.4"
-    hash.js "^1.0.0"
-    pako "^2.1.0"
-    tslib "^2.0.3"
+    "@wharfkit/antelope" "^1.0.0"
+    "@wharfkit/common" "^1.2.0"
+    "@wharfkit/contract" "^1.0.0"
+    "@wharfkit/resources" "^1.1.0"
+    "@wharfkit/token" "^1.0.1"
+    tslib "^2.1.0"
 
-"@wharfkit/antelope@^1.0.2", "@wharfkit/antelope@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.4.tgz#f88305957c82fac41862a973581797ed29b5c287"
-  integrity sha512-FGB7YiTRz86T2V8XJNJGrrNBnIx9y+DV9MqXNwEHBwxzmXdA8Gurk7AQ5RfIQEllJeZbeMd6BeRT1nxQUUTRwQ==
+"@wharfkit/antelope@^1.0.0", "@wharfkit/antelope@^1.0.2", "@wharfkit/antelope@^1.0.4", "@wharfkit/antelope@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@wharfkit/antelope/-/antelope-1.0.5.tgz#a33893137e9127847128725d185a2e940a2e243a"
+  integrity sha512-/ptouzm4cRVY5seLrvfQR8r5KzzHS+4UOycSiMNmZFmKRZWI/T29dMLJn4IXgakkghPB1iiSD+QcDpguyNGTpA==
   dependencies:
     bn.js "^4.11.9"
     brorand "^1.1.0"
@@ -634,35 +624,43 @@
   dependencies:
     tslib "^2.1.0"
 
-"@wharfkit/mock-data@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/mock-data/-/mock-data-1.2.0.tgz#fa5749f1332e413ecd4126dedf1d17724840df41"
-  integrity sha512-R779GKbzVeJFvO/VMLnjSua4YteQiuJ1WX/MjEeo2ftP0aPgaLNEoFKGa7veAvYEv/6mgEcS4Sm5gyFi1Enxhg==
+"@wharfkit/contract@^1.0.0":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@wharfkit/contract/-/contract-1.1.4.tgz#5d65a7effa02bb71c98a7493cfdca2472578e6d5"
+  integrity sha512-7jRgyAHrxg0/RJzOoGn4r1Md2Kho2Bozxzv+sn3c5e7ii8w9nQjyyVnYmFEVRFh6pQ0BtR/pqh6wrYJYTfXQIA==
   dependencies:
-    "@wharfkit/antelope" "^1.0.0"
-    "@wharfkit/session" "^1.1.0-rcfinal"
-    "@wharfkit/wallet-plugin-privatekey" "^1.0.0"
+    "@wharfkit/abicache" "^1.2.0"
+    "@wharfkit/antelope" "^1.0.4"
+    "@wharfkit/signing-request" "^3.1.0"
+    tslib "^2.1.0"
+
+"@wharfkit/mock-data@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@wharfkit/mock-data/-/mock-data-1.3.0.tgz#7a9caa7c7fb2ad839bc12593de1b7a546b673ae6"
+  integrity sha512-LkhAkrUOvG6o+lPWb2Q6JCrs9++F2XowGK42PODh35Xu9an5H+THMGjpUhTC1sPiYkfjhkmBbAzMpZbHjkXj4w==
+  dependencies:
+    "@wharfkit/antelope" "^1.0.5"
+    "@wharfkit/session" "^1.2.7"
+    "@wharfkit/wallet-plugin-privatekey" "^1.1.0"
     node-fetch "^2.6.1"
     tslib "^2.1.0"
 
-"@wharfkit/session@^1.1.0-rcfinal":
-  version "1.1.0-rcfinal"
-  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.1.0-rcfinal.tgz#29a9f40dca8557e96d5e44c1498b09eb641f47e1"
-  integrity sha512-UijDlP2yE8WoprAXz8EpAyz1GyxWv9OloRGApTUKM/lMuSk1U2d7vefQzyXTn14f1npd7bfBzeTQ5piTerBHww==
+"@wharfkit/resources@^1.1.0":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/resources/-/resources-1.2.1.tgz#02cbc3b2a986d622154bb71820b0af60bf0de59d"
+  integrity sha512-K5GCvps3wHnGk7z5wtQqtrrpt5gz18YUTYkuPXa6fPY/zim4QLFED5uNe9eULJ2dwNAJPZ9quGD8TxKtaCazrA==
   dependencies:
-    "@wharfkit/abicache" "^1.2.0"
     "@wharfkit/antelope" "^1.0.0"
-    "@wharfkit/common" "^1.2.0"
-    "@wharfkit/signing-request" "^3.1.0"
-    pako "^2.0.4"
+    bn.js "^4.11.9"
     tslib "^2.1.0"
 
-"@wharfkit/session@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.2.5.tgz#56a8a99de0424d96d0b00488180db3c9729d3609"
-  integrity sha512-EXKA9EB/8zF1CtLU/0ZXGAzieD8/vZDLd3jzj+zSQjZ4TyI8m22qxU/78y3JOvAS6g1m6Mh5bqDPCZN6oBWtxA==
+"@wharfkit/session@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@wharfkit/session/-/session-1.2.7.tgz#8ff802d311038058d0cd5f65abcb1a85725bd18f"
+  integrity sha512-EP6uszhUlC90UAHDg+ZoXJid4z+d+iXPgOcMlWfNivq6XtyYXU+uDO9nyuZ9aiGezUs0dcnWuXsB8SM8vuR2Nw==
   dependencies:
     "@wharfkit/abicache" "^1.2.1"
+    "@wharfkit/account" "^1.0.0"
     "@wharfkit/antelope" "^1.0.2"
     "@wharfkit/common" "^1.2.0"
     "@wharfkit/signing-request" "^3.1.0"
@@ -677,11 +675,14 @@
     "@wharfkit/antelope" "^1.0.0"
     tslib "^2.0.3"
 
-"@wharfkit/wallet-plugin-privatekey@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@wharfkit/wallet-plugin-privatekey/-/wallet-plugin-privatekey-1.0.0.tgz#2600cce1117ce9391c8078649e05ceaf93780f1d"
-  integrity sha512-V+/7T/cwoHM8fDaM3MZ1DFKrX2+NddBkkWJ8BIFfmEZnGR1W8Qr77t+piOP0/6UM2etmuZh98XLwZS33vORQ0A==
+"@wharfkit/token@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@wharfkit/token/-/token-1.0.1.tgz#072f51d0294756b26b4270c9cd68af2f27db064b"
+  integrity sha512-vwGaNiZvVf2X64BQLcObF5TxVZhmym1l6vQsNlTrNA225EhLEY15FI8W2HJ9/TrrTj3ZjPbzXtnQWedGsc41wg==
   dependencies:
+    "@wharfkit/antelope" "^1.0.0"
+    "@wharfkit/contract" "^1.0.0"
+    bn.js "^4.11.9"
     tslib "^2.1.0"
 
 "@wharfkit/wallet-plugin-privatekey@^1.1.0":
@@ -1013,15 +1014,15 @@ color-name@~1.1.4:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
+commander@^10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-10.0.1.tgz#881ee46b4f77d1c1dccc5823433aa39b022cbe06"
+  integrity sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==
+
 commander@^2.18.0, commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
-
-commander@^9.4.1:
-  version "9.5.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-9.5.0.tgz#bc08d1eb5cedf7ccb797a96199d41c7bc3e60d30"
-  integrity sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -2471,10 +2472,10 @@ semver@^6.0.0, semver@^6.3.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
-semver@^7.3.7, semver@^7.3.8:
-  version "7.3.8"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.8.tgz#07a78feafb3f7b32347d725e33de7e2a2df67798"
-  integrity sha512-NB1ctGL5rlHrPJtFDVIVzTyQylMLu9N9VICA6HSFJo8MCGVTMW6gfpicwKmmK/dAjTOrqu5l63JJOpDSrAis3A==
+semver@^7.3.7, semver@^7.5.0:
+  version "7.5.4"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
+  integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
   dependencies:
     lru-cache "^6.0.0"
 
@@ -2725,10 +2726,10 @@ tslib@^1.8.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.0.tgz#42bfed86f5787aeb41d031866c8f402429e0fddf"
-  integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
+tslib@^2.0.3, tslib@^2.1.0, tslib@^2.5.0:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tsutils@^3.21.0:
   version "3.21.0"
@@ -2967,15 +2968,15 @@ yargs@^15.0.2:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-yarn-deduplicate@^6.0.1:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/yarn-deduplicate/-/yarn-deduplicate-6.0.1.tgz#71d9ee311a10d08edb576a178a5c78fba02f05c2"
-  integrity sha512-wH2+dyLt1cCMx91kmfiB8GhHiZPVmfD9PULoWGryiqgvA+uvcR3k1yaDbB+K/bTx/NBiMhpnSTFdeWM6MqROYQ==
+yarn-deduplicate@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/yarn-deduplicate/-/yarn-deduplicate-6.0.2.tgz#63498d2d4c3a8567e992a994ce0ab51aa5681f2e"
+  integrity sha512-Efx4XEj82BgbRJe5gvQbZmEO7pU5DgHgxohYZp98/+GwPqdU90RXtzvHirb7hGlde0sQqk5G3J3Woyjai8hVqA==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
-    commander "^9.4.1"
-    semver "^7.3.8"
-    tslib "^2.4.1"
+    commander "^10.0.1"
+    semver "^7.5.0"
+    tslib "^2.5.0"
 
 yn@3.1.1:
   version "3.1.1"

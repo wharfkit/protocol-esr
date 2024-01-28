@@ -5,6 +5,7 @@ import {
     CallbackPayload,
     CallbackType,
     ChainDefinition,
+    ChainId,
     Checksum256,
     Checksum512,
     LoginContext,
@@ -64,13 +65,24 @@ export async function createIdentityRequest(
     // Create the callback
     const callbackChannel = prepareCallbackChannel(buoyUrl)
 
+    // Determine the chain id(s) to use
+    const chainId: ChainId | null = isMultiChain
+        ? null
+        : context.chain
+        ? ChainId.from(context.chain.id.array)
+        : null
+
+    const chainIds: ChainId[] = isMultiChain
+        ? context.chains.map((c) => ChainId.from(c.id.array))
+        : []
+
     // Create the request
     const request = SigningRequest.identity(
         {
             callback: prepareCallback(callbackChannel),
             scope: String(context.appName),
-            chainId: isMultiChain ? null : context.chain?.id,
-            chainIds: isMultiChain ? context.chains.map((c) => c.id) : undefined,
+            chainId,
+            chainIds,
             info: {
                 link: createInfo,
                 scope: String(context.appName),
@@ -80,9 +92,11 @@ export async function createIdentityRequest(
     )
 
     const sameDeviceRequest = request.clone()
-    const returnUrl = generateReturnUrl()
-    sameDeviceRequest.setInfoKey('same_device', true)
-    sameDeviceRequest.setInfoKey('return_path', returnUrl)
+    if (typeof window !== 'undefined') {
+        const returnUrl = generateReturnUrl()
+        sameDeviceRequest.setInfoKey('same_device', true)
+        sameDeviceRequest.setInfoKey('return_path', returnUrl)
+    }
 
     // Return the request and the callback data
     return {
