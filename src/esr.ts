@@ -190,20 +190,21 @@ export async function verifyLoginCallbackResponse(callbackResponse, context: Log
 }
 
 export function extractSignaturesFromCallback(payload: CallbackPayload): Signature[] {
-    const signatures: Signature[] = []
+    const signatures: string[] = []
 
     let index = 0
     let sig: string | undefined = payload.sig
 
     while (sig) {
-        signatures.push(Signature.from(sig))
+        signatures.push(String(sig))
 
         sig = payload[`sig${index}`]
 
         index++
     }
 
-    return signatures
+    // Deduplicate and make signatures
+    return [...new Set(signatures)].map((s) => Signature.from(s))
 }
 
 export function isCallback(object: any): object is CallbackPayload {
