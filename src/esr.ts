@@ -54,7 +54,7 @@ export async function createIdentityRequest(
 
     // Create a new BuoySession struct to be used as the info field
     const createInfo = BuoySession.from({
-        session_name: 'Anchor Session',
+        session_name: context.appName,
         request_key: requestKey,
         user_agent: getUserAgent(),
     })
