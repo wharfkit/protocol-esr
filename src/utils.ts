@@ -113,47 +113,58 @@ export function isAppleHandheld() {
     return /iP(ad|od|hone)/i.test(navigator.userAgent)
 }
 
-function isChromeiOS() {
+export function isChromeiOS() {
     return /CriOS/.test(navigator.userAgent)
 }
 
-function isChromeMobile() {
+export function isChromeMobile() {
     return /Chrome\/[.0-9]* Mobile/i.test(navigator.userAgent)
 }
 
-function isFirefox() {
+export function isFirefox() {
     return /Firefox/i.test(navigator.userAgent)
 }
 
-function isFirefoxiOS() {
+export function isFirefoxiOS() {
     return /FxiOS/.test(navigator.userAgent)
 }
 
-function isOpera() {
+export function isOpera() {
     return /OPR/.test(navigator.userAgent) || /Opera/.test(navigator.userAgent)
 }
 
-function isEdge() {
+export function isEdge() {
     return /Edg/.test(navigator.userAgent)
 }
 
-function isBrave() {
+export function isBrave() {
     return navigator['brave'] && typeof navigator['brave'].isBrave === 'function'
 }
 
-function isAndroid() {
+export function isAndroid() {
     return /Android/.test(navigator.userAgent)
 }
 
-function isReactNativeApp() {
+export function isReactNativeApp() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return !!window.ReactNativeWebView
 }
 
-function isAndroidWebView() {
+export function isAndroidWebView() {
     return (
         /wv/.test(navigator.userAgent) ||
         (/Android/.test(navigator.userAgent) && isReactNativeApp())
+    )
+}
+
+export function isKnownMobile() {
+    return (
+        isAppleHandheld() ||
+        isChromeiOS() ||
+        isChromeMobile() ||
+        isFirefoxiOS() ||
+        isAndroid() ||
+        isAndroidWebView()
     )
 }
