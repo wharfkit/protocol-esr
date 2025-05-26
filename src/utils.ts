@@ -59,7 +59,12 @@ export function uuid(): string {
 }
 
 /** Generate a return url that Anchor will redirect back to w/o reload. */
-export function generateReturnUrl() {
+export function generateReturnUrl(): string | undefined {
+    // Return undefined for iOS React Native apps to prevent redirect to Safari
+    if (isAppleHandheld() && isReactNativeApp()) {
+        return undefined
+    }
+
     if (isChromeiOS()) {
         // google chrome on iOS will always open new tab so we just ask it to open again as a workaround
         return 'googlechrome://'
