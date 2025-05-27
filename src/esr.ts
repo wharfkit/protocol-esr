@@ -95,7 +95,9 @@ export async function createIdentityRequest(
     if (typeof window !== 'undefined') {
         const returnUrl = generateReturnUrl()
         sameDeviceRequest.setInfoKey('same_device', true)
-        sameDeviceRequest.setInfoKey('return_path', returnUrl)
+        if (returnUrl !== undefined) {
+            sameDeviceRequest.setInfoKey('return_path', returnUrl)
+        }
     }
 
     // Return the request and the callback data
