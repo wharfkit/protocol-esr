@@ -1,12 +1,4 @@
-import {Bytes, Name, PublicKey, Struct, TimePointSec, UInt32, UInt64} from '@wharfkit/session'
-
-@Struct.type('sealed_message')
-export class SealedMessage extends Struct {
-    @Struct.field('public_key') from!: PublicKey
-    @Struct.field('uint64') nonce!: UInt64
-    @Struct.field('bytes') ciphertext!: Bytes
-    @Struct.field('uint32') checksum!: UInt32
-}
+import {Name, PublicKey, Struct, TimePointSec} from '@wharfkit/session'
 
 @Struct.type('link_create')
 export class LinkCreate extends Struct {

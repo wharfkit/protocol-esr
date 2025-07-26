@@ -2,8 +2,8 @@ import {expect} from 'chai'
 import {CallbackPayload, LoginContext, PrivateKey, SigningRequest, UInt64} from '@wharfkit/session'
 import {
     createIdentityRequest,
-    setTransactionCallback,
     sealMessage,
+    setTransactionCallback,
     verifyLoginCallbackResponse,
 } from 'src/esr'
 import {mockLoginContext} from '../utils/mock-context'
@@ -50,12 +50,12 @@ suite('anchor', () => {
     })
 
     suite('sealMessage', () => {
-        test('seals the given message with the given private and public keys', () => {
+        test('seals the given message with the given private and public keys', async () => {
             const privateKey = PrivateKey.from(mockPrivateKey)
             const publicKey = privateKey.toPublic()
             const message = 'hello world'
             const nonce = UInt64.from(1234)
-            const result = sealMessage(message, privateKey, publicKey, nonce)
+            const result = await sealMessage(message, privateKey, publicKey, nonce)
             expect(result).to.have.property('from')
             expect(result).to.have.property('nonce', nonce)
             expect(result).to.have.property('ciphertext')

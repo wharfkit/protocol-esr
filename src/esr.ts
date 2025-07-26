@@ -1,27 +1,21 @@
 import {ReceiveOptions} from '@greymass/buoy'
-import {AES_CBC} from '@greymass/miniaes'
 import {
-    Bytes,
     CallbackPayload,
     CallbackType,
     ChainDefinition,
     ChainId,
-    Checksum256,
-    Checksum512,
     LoginContext,
     PrivateKey,
     PublicKey,
-    Serializer,
     Signature,
     SigningRequest,
     UInt64,
 } from '@wharfkit/session'
+import {SealedMessage, sealedMessagePayload} from '@wharfkit/sealed-messages'
 
 import {generateReturnUrl, uuid} from './utils'
 
 import {BuoySession} from './buoy-types'
-
-import {SealedMessage} from './anchor-types'
 
 import WebSocket from 'isomorphic-ws'
 
@@ -149,27 +143,13 @@ function prepareCallbackChannel(buoyUrl): ReceiveOptions {
     }
 }
 
-export function sealMessage(
+export async function sealMessage(
     message: string,
     privateKey: PrivateKey,
     publicKey: PublicKey,
     nonce?: UInt64
-): SealedMessage {
-    const secret = privateKey.sharedSecret(publicKey)
-    if (!nonce) {
-        nonce = UInt64.random()
-    }
-    const key = Checksum512.hash(Serializer.encode({object: nonce}).appending(secret.array))
-    const cbc = new AES_CBC(key.array.slice(0, 32), key.array.slice(32, 48))
-    const ciphertext = Bytes.from(cbc.encrypt(Bytes.from(message, 'utf8').array))
-    const checksumView = new DataView(Checksum256.hash(key.array).array.buffer)
-    const checksum = checksumView.getUint32(0, true)
-    return SealedMessage.from({
-        from: privateKey.toPublic(),
-        nonce,
-        ciphertext,
-        checksum,
-    })
+): Promise<SealedMessage> {
+    return sealedMessagePayload(message, privateKey, publicKey, nonce)
 }
 
 export async function verifyLoginCallbackResponse(callbackResponse, context: LoginContext) {
