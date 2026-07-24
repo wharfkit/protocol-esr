@@ -174,15 +174,21 @@ export async function verifyLoginCallbackResponse(callbackResponse, context: Log
 export function extractSignaturesFromCallback(payload: CallbackPayload): Signature[] {
     const signatures: string[] = []
 
-    let index = 0
-    let sig: string | undefined = payload.sig
+    if (payload.sig) {
+        signatures.push(String(payload.sig))
+    }
 
-    while (sig) {
-        signatures.push(String(sig))
+    // Tolerate zero-based (`sig0`) and one-based (`sig1`, swift-eosio) numbering, including gaps.
+    const indexed = Object.keys(payload)
+        .map((key) => /^sig(\d+)$/.exec(key))
+        .filter((match): match is RegExpExecArray => match !== null)
+        .sort((a, b) => Number(a[1]) - Number(b[1]))
 
-        sig = payload[`sig${index}`]
-
-        index++
+    for (const match of indexed) {
+        const sig = payload[match[0]]
+        if (sig) {
+            signatures.push(String(sig))
+        }
     }
 
     // Deduplicate and make signatures
