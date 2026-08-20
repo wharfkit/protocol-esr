@@ -20,6 +20,7 @@
         "@wharfkit/antelope": "^1.1.0",
         "@wharfkit/sealed-messages": "^1.2.0",
         "isomorphic-ws": "^5.0.0",
+        "pako": "^2.1.0",
         "ws": "^8.13.0"
     },
     "peerDependencies": {
@@ -53,7 +54,6 @@
         "mocha": "^10.0.0",
         "node-fetch": "^2.6.1",
         "nyc": "^15.1.0",
-        "pako": "^2.1.0",
         "prettier": "^2.2.1",
         "rollup": "^2.70.2",
         "rollup-plugin-dts": "^4.2.1",
