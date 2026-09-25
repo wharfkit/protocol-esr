@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This package lives in the WharfKit monorepo at [wharfkit/js/packages/protocol-esr](https://github.com/wharfkit/js/tree/dev/packages/protocol-esr), and this repository is archived. Open new issues and pull requests on [wharfkit/js](https://github.com/wharfkit/js).
+
 # @wharfkit/protocol-esr
 
 Abstract functions for use by various ESR-based wallet plugins.
